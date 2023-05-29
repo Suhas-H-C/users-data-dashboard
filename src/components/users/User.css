@@ -1,0 +1,43 @@
+.userdata {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    font-weight: 800;
+    border: 1px solid black;
+    padding: 8px;
+}
+
+td {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 1px solid black;
+    padding: 8px;
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    background-color: #f1f1f1;
+    color: #128932;
+    transition: box-shadow 0.3s ease;
+}
+
+.button:hover {
+    box-shadow: 8px 8px 18px rgba(18, 46, 200, 0.3);
+}
+
+
+.button:active {
+    background-color: #162882;
+  }
