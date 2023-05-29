@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Clients from '../classes/Clients';
-import './User.css';
+import '../play-around-css/User.css';
 
 type UsersProps = {
     urlForUsers: string,

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import PlayAround from './components/play-around/PlayAround';
-import User from './components/users/User';
+import PlayAround from './components/play-around-components/PlayAround';
+import User from './components/play-around-components/User';
 
 function App() {
   const urlForUsers = "https://jsonplaceholder.typicode.com/users";
@@ -14,7 +14,7 @@ function App() {
         urlForPosts={urlForPosts}
         actualUsersData={userData} onDataChange={setData} />
 
-      {/* <PlayAround /> */}
+      <PlayAround />
     </div>
   );
 }
