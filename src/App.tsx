@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PlayAround from './components/play-around/PlayAround';
 import User from './components/users/User';
 
 function App() {
@@ -12,6 +13,8 @@ function App() {
       <User urlForUsers={urlForUsers}
         urlForPosts={urlForPosts}
         actualUsersData={userData} onDataChange={setData} />
+
+      {/* <PlayAround /> */}
     </div>
   );
 }
