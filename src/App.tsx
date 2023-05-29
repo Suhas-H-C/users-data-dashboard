@@ -2,12 +2,16 @@ import { useState } from 'react';
 import User from './components/users/User';
 
 function App() {
-  let url = "https://jsonplaceholder.typicode.com/users";
+  const urlForUsers = "https://jsonplaceholder.typicode.com/users";
+  const urlForPosts = "https://jsonplaceholder.typicode.com/posts";
+
   let [userData, setData] = useState([]);
 
   return (
     <div >
-      <User url={url} actualData={userData} onDataChange={setData} />
+      <User urlForUsers={urlForUsers}
+        urlForPosts={urlForPosts}
+        actualUsersData={userData} onDataChange={setData} />
     </div>
   );
 }
