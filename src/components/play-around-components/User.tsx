@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import Clients from '../classes/Clients';
-import './User.css';
+import '../play-around-css/User.css';
 
 type UsersProps = {
-    url: string,
-    actualData: Clients[],
+    urlForUsers: string,
+    urlForPosts: string,
+    actualUsersData: Clients[],
     onDataChange: Function
 }
 
@@ -29,19 +30,36 @@ const User = (Props: UsersProps) => {
         }
     };
 
+    const uploadPost = (api: string, params?: Object) => {
+        try {
+            fetch(api, {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify(params)
+            }).then(response => response.json()).then(result => console.log(result))
+                .catch(err => setErrors(err));
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     //executes at page loading once
     useEffect(() => {
-        fetchUserData(Props.url);
-    }, [Props.url]);
+        fetchUserData(Props.urlForUsers);
+        uploadPost(Props.urlForPosts);
+    }, [Props.urlForUsers, Props.urlForPosts]); //When props URLs changes the useEffect executes one more time, 
+    //leave it empty if you need it to run only once
 
     const respectclients = () => {
-        Props.actualData = Props.actualData.map(client => {
+        Props.actualUsersData = Props.actualUsersData.map(client => {
             return {
                 ...client,
                 name: 'Mr.' + client.name
             }
         });
-        Props.onDataChange(Props.actualData);
+        Props.onDataChange(Props.actualUsersData);
     }
 
     return (
@@ -58,7 +76,7 @@ const User = (Props: UsersProps) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {Props.actualData.map(client => (
+                    {Props.actualUsersData.map(client => (
                         <tr key={client.id}>
                             <td>{client.id}</td>
                             <td>{client.name}</td>
@@ -70,7 +88,7 @@ const User = (Props: UsersProps) => {
                     ))}
                 </tbody>
             </table>
-            <button className='button' onClick={() => fetchUserData(Props.url)}>Refresh data</button>
+            <button className='button' onClick={() => fetchUserData(Props.urlForUsers)}>Refresh data</button>
         </div>
     );
 }
